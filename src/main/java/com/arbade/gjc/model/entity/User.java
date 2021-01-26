@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -23,18 +25,18 @@ public class User {
 
     @JsonProperty("user_id")
     @Id
-    private String uuid = UUID.randomUUID().toString();
+    private String uuid;
 
     @JsonProperty("display_name")
     private String displayName;
     @JsonProperty("country")
     private String country;
     @JsonProperty("points")
-    private long points;
+    private double points;
     @JsonProperty("high_score")
-    private long highScore;
+    private double highScore;
     @JsonProperty
-    private List<Score> scores = new LinkedList<>();
+    private List<Score> scores;
     @Transient
     @JsonProperty("global_rank")
     private long globalRank;
