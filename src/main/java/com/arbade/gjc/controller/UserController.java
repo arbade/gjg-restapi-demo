@@ -51,7 +51,6 @@ public class UserController {
     public ResponseEntity<?> getUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable String userId) {
 
         try {
-//            User user = userService.getByUserId(userId);
             UserResponseDto userResponseDto = userService.getByUserId(userId);
             return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
         } catch (RuntimeException e) {
@@ -62,6 +61,7 @@ public class UserController {
     @ApiOperation(value = "Get total distance of courier")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/profile/delete/{userId}")
+    @ApiResponse(code = 200,message = "Delete User by ID ")
     public ResponseEntity<?> deleteUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable String userId) {
         String result = userService.deleteUserById(userId);
         return ResponseEntity.status(HttpStatus.OK).body(result);
