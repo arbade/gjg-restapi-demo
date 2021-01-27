@@ -32,21 +32,24 @@ public class UserService {
         long globalRank = userRepository.count() + 1;
         long localRank = userRepository.countAllByCountry(userRequestDto.getCountry()) + 1;
         User user = userMapper.map(userRequestDto);
-        user.setUuid(UUID.randomUUID().toString());
+        user.set_id(UUID.randomUUID());
         user.setGlobalRank(globalRank);
         user.setLocalRank(localRank);
         User savedUser = userRepository.save(user);
         return userMapper.mapToDto(savedUser);
     }
 
-    public UserResponseDto getByUserId(String uuid) {
-        UserResponseDto userResponseDto = userRepository.findUserByUuid(uuid);
-        return userResponseDto;
+    public UserResponseDto getByUserId(UUID id) throws Exception {
+        User user = userRepository.findById(id).orElseThrow(() -> new Exception("Not Found"));
+        return userMapper.mapToDto(user);
     }
 
-    public String deleteUserById(String uuid) {
-        userRepository.deleteUserByUuid(uuid);
-        return uuid;
+    public void deleteUserById(UUID id) {
+        userRepository.deleteById(id);
+    }
+
+    public void deleteAllUser() {
+        userRepository.deleteAll();
     }
 
 

@@ -16,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/user")
 @Api(value = "Courier Tracking Management System", description = "Operations pertaining to courier tracking in Case Demo")
@@ -48,7 +50,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/profile/{userId}")
     @ApiResponse(code = 200, message = "Total Distance")
-    public ResponseEntity<?> getUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable String userId) {
+    public ResponseEntity<?> getUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable UUID userId) throws Exception {
 
         try {
             UserResponseDto userResponseDto = userService.getByUserId(userId);
@@ -61,10 +63,19 @@ public class UserController {
     @ApiOperation(value = "Get total distance of courier")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/profile/delete/{userId}")
-    @ApiResponse(code = 200,message = "Delete User by ID ")
-    public ResponseEntity<?> deleteUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable String userId) {
-        String result = userService.deleteUserById(userId);
-        return ResponseEntity.status(HttpStatus.OK).body(result);
+    @ApiResponse(code = 200, message = "Delete User by ID ")
+    public ResponseEntity<?> deleteUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable UUID userId) {
+        userService.deleteUserById(userId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @ApiOperation(value = "Get total distance of courier")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/profile/deleteAll")
+    @ApiResponse(code = 200, message = "Delete User by ID ")
+    public ResponseEntity<?> deleteAll() {
+        userService.deleteAllUser();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
 }

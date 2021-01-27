@@ -9,8 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
 
 @Mapper(config = MapperConfig.class)
 public interface UserMapper {

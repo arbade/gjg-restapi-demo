@@ -23,10 +23,9 @@ import java.util.UUID;
 @NoArgsConstructor
 public class User {
 
-    @JsonProperty("user_id")
+    @JsonProperty("_id")
     @Id
-    private String uuid;
-
+    private UUID _id;
     @JsonProperty("display_name")
     private String displayName;
     @JsonProperty("country")
@@ -35,12 +34,10 @@ public class User {
     private double points;
     @JsonProperty("high_score")
     private double highScore;
-    @JsonProperty
+    @JsonProperty("scores")
     private List<Score> scores;
-    @Transient
     @JsonProperty("global_rank")
     private long globalRank;
-    @Transient
     @JsonProperty("local_rank")
     private long localRank;
 

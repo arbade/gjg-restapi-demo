@@ -2,11 +2,13 @@ package com.arbade.gjc.model.dto.request;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class ScoreRequestDto {
 
 
-    private String id;
+    private UUID _id;
     private double scoreWorth;
 
 }
