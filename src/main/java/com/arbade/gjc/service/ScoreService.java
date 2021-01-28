@@ -21,22 +21,18 @@ import java.util.List;
 @Service
 public class ScoreService {
 
-    private final ScoreRepository scoreRepository;
-
-    private final ScoreMapper scoreMapper;
 
     private final UserRepository userRepository;
 
     @Autowired
-    public ScoreService(ScoreRepository scoreRepository, ScoreMapper scoreMapper, UserRepository userRepository) {
-        this.scoreRepository = scoreRepository;
-        this.scoreMapper = scoreMapper;
+    public ScoreService(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
     public ScoreResponseDto submit(ScoreRequestDto scoreRequestDto) throws Exception {
         User user = userRepository.findById(scoreRequestDto.get_id()).orElseThrow(() -> new Exception("Not Found"));
-        if (CollectionUtils.isEmpty(user.getScores())) {
+        if (user.getScores() == null) {
             user.setScores(new ArrayList());
         }
         user.getScores().add(Score.builder().scoreWorth(scoreRequestDto.getScoreWorth()).timestamp(new Date()).build());

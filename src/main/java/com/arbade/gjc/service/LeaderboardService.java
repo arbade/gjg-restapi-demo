@@ -6,6 +6,7 @@ import com.arbade.gjc.model.entity.Leaderboard;
 import com.arbade.gjc.repository.LeaderboardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 
@@ -13,27 +14,27 @@ import java.util.List;
 @Service
 public class LeaderboardService {
 
-    private final LeaderboardMapper leaderboardMapper;
+
     private final LeaderboardRepository leaderboardRepository;
 
-    public LeaderboardService(LeaderboardMapper leaderboardMapper, LeaderboardRepository leaderboardRepository) {
-        this.leaderboardMapper = leaderboardMapper;
+    public LeaderboardService(LeaderboardRepository leaderboardRepository) {
+
         this.leaderboardRepository = leaderboardRepository;
     }
 
-    public List<Leaderboard> getLeaderboard(){
+    public List<Leaderboard> getLeaderboard() {
         List<Leaderboard> leaderboards = leaderboardRepository.findAllByOrderByPointsDesc();
         for (int i = 0; i < leaderboards.size(); i++) {
-            leaderboards.get(i).setRank(i+1);
+            leaderboards.get(i).setRank(i + 1);
 
         }
         return leaderboards;
     }
 
-    public List<Leaderboard> getLeaderboardByCountry(String country){
+    public List<Leaderboard> getLeaderboardByCountry(String country) {
         List<Leaderboard> leaderboards = leaderboardRepository.findAllByCountryOrderByPointsDesc(country);
         for (int i = 0; i < leaderboards.size(); i++) {
-            leaderboards.get(i).setRank(i+1);
+            leaderboards.get(i).setRank(i + 1);
 
         }
         return leaderboards;

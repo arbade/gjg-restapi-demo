@@ -53,7 +53,7 @@ public class UserService {
     public List<User> getUsers() throws Exception {
         List<User> users = userRepository.findAll();
         if (CollectionUtils.isEmpty(users)) {
-            throw new Exception("No user founds");
+            throw new Exception("No User Founds");
         }
         return users;
     }
