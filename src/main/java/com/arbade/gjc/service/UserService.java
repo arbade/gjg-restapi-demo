@@ -29,12 +29,10 @@ public class UserService {
 
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
 
-        long globalRank = userRepository.count() + 1;
-        long localRank = userRepository.countAllByCountry(userRequestDto.getCountry()) + 1;
+//        long globalRank = userRepository.count() + 1;
+//        long localRank = userRepository.countAllByCountry(userRequestDto.getCountry()) + 1;
         User user = userMapper.map(userRequestDto);
         user.set_id(UUID.randomUUID());
-//        user.setGlobalRank(globalRank);
-//        user.setLocalRank(localRank);
         User savedUser = userRepository.save(user);
         return userMapper.mapToDto(savedUser);
     }
@@ -75,12 +73,4 @@ public class UserService {
         userRepository.saveAll(users);
     }
 
-//    private void createRandomUserGenerator(List<UserRequestDto> list) {
-//        for (UserRequestDto userRequestDto : list) {
-//            User user = userMapper.map(userRequestDto);
-//
-//        }
-//        User generatedUser = userRepository.insert(list);
-//        userMapper.mapToDto(generatedUser);
-//    }
 }
