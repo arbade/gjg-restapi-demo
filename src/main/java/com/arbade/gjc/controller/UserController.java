@@ -87,5 +87,18 @@ public class UserController {
         return userService.getUsers();
     }
 
+    @ApiOperation(value = "Get total distance of courier")
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/profile/{amount}")
+    @ApiResponse(code = 200, message = "Total Distance")
+    public ResponseEntity<?> createRandUser(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable int amount) throws Exception {
+
+        try {
+            userService.createRandomUser(amount);
+            return ResponseEntity.status(HttpStatus.OK).body("created");
+        } catch (RuntimeException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User Not Found", e);
+        }
+    }
 
 }

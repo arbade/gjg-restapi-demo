@@ -23,4 +23,5 @@ public interface UserRepository extends MongoRepository<User, UUID> {
     List<User> findUserByCountry(String country);
 
 
+    User insert(List<UserRequestDto> list);
 }

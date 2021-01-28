@@ -11,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -55,9 +54,33 @@ public class UserService {
 
     public List<User> getUsers() throws Exception {
         List<User> users = userRepository.findAll();
-        if (CollectionUtils.isEmpty(users)){
+        if (CollectionUtils.isEmpty(users)) {
             throw new Exception("No user founds");
         }
         return users;
     }
+
+    public void createRandomUser(int amount) {
+        String[] generateCountry = {"tr", "us", "de", "az", "uk"};
+        Random random = new Random();
+        String generateName = "gjg_name_";
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            User user = new User();
+            user.setCountry(generateCountry[random.nextInt(generateCountry.length)]);
+            user.setDisplayName(generateName + i);
+            user.set_id(UUID.randomUUID());
+            users.add(user);
+        }
+        userRepository.saveAll(users);
+    }
+
+//    private void createRandomUserGenerator(List<UserRequestDto> list) {
+//        for (UserRequestDto userRequestDto : list) {
+//            User user = userMapper.map(userRequestDto);
+//
+//        }
+//        User generatedUser = userRepository.insert(list);
+//        userMapper.mapToDto(generatedUser);
+//    }
 }

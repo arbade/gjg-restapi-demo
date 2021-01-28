@@ -27,7 +27,7 @@ public class LeaderboardController {
 
     @ApiOperation(value = "Get total distance of courier")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping()
+    @GetMapping
     @ApiResponse(code = 200, message = "Total Distance")
     public List<Leaderboard> getLeaderboardList() throws Exception {
         return leaderboardService.getLeaderboard();
@@ -35,9 +35,9 @@ public class LeaderboardController {
 
     @ApiOperation(value = "Get total distance of courier")
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping
+    @GetMapping("/{country}")
     @ApiResponse(code = 200, message = "Total Distance")
-    public List<Leaderboard> getLeaderboardList( @RequestParam (name = "country") String country) throws Exception {
+    public List<Leaderboard> getLeaderboardList(@ApiParam(value = "courierId of courier", required = true, example = "1")  @PathVariable String country) throws Exception {
         return leaderboardService.getLeaderboardByCountry(country);
     }
 
