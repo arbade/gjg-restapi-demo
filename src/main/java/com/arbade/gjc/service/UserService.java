@@ -34,8 +34,8 @@ public class UserService {
         long localRank = userRepository.countAllByCountry(userRequestDto.getCountry()) + 1;
         User user = userMapper.map(userRequestDto);
         user.set_id(UUID.randomUUID());
-        user.setGlobalRank(globalRank);
-        user.setLocalRank(localRank);
+//        user.setGlobalRank(globalRank);
+//        user.setLocalRank(localRank);
         User savedUser = userRepository.save(user);
         return userMapper.mapToDto(savedUser);
     }

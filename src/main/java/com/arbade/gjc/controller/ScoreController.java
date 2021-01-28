@@ -21,12 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ScoreController {
 
-    private ScoreService scoreService;
+    private final ScoreService scoreService;
 
-    @Autowired
-    public ScoreController(ScoreService scoreService) {
-        this.scoreService = scoreService;
-    }
 
     @PostMapping
     @ApiOperation(value = "Create new  Courier Location")

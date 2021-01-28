@@ -12,6 +12,6 @@ public class UserResponseDto {
     private UUID _id;
     private String displayName;
     private double points;
-    private long rank;
+//    private long rank;
 
 }

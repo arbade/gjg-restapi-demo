@@ -36,10 +36,10 @@ public class User {
     private double highScore;
     @JsonProperty("scores")
     private List<Score> scores;
-    @JsonProperty("global_rank")
-    private long globalRank;
-    @JsonProperty("local_rank")
-    private long localRank;
+//    @JsonProperty("global_rank")
+//    private long globalRank;
+//    @JsonProperty("local_rank")
+//    private long localRank;
 
 
 }

@@ -17,7 +17,7 @@ public interface UserMapper {
 
     User map(UserRequestDto userRequestDto);
 
-    @Mappings({@Mapping(target = "rank", source = "globalRank")})
+//    @Mappings({@Mapping(target = "rank", source = "globalRank")})
     UserResponseDto mapToDto(User user);
 //
 //    List<User> map(List<UserResponseDto> userResponseDtoList);

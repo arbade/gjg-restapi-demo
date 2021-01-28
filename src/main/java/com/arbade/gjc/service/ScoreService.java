@@ -45,10 +45,10 @@ public class ScoreService {
         user.setPoints(user.getPoints() + scoreRequestDto.getScoreWorth());
         userRepository.save(user);
         List<User> allByPointsBetween = userRepository.findAllByPointsBetween(oldPoint, user.getPoints());
-        allByPointsBetween.forEach(user1 -> {
-            user1.setGlobalRank(user1.getGlobalRank() + 1);
-            user1.setLocalRank(user1.getLocalRank() + 1);
-        });
+//        allByPointsBetween.forEach(user1 -> {
+//            user1.setGlobalRank(user1.getGlobalRank() + 1);
+//            user1.setLocalRank(user1.getLocalRank() + 1);
+//        });
         userRepository.saveAll(allByPointsBetween);
         ScoreResponseDto scoreResponseDto = new ScoreResponseDto();
         scoreResponseDto.set_id(scoreRequestDto.get_id());
