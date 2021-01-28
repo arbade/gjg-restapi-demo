@@ -20,5 +20,7 @@ public interface UserRepository extends MongoRepository<User, UUID> {
 
     List<User> findAllByPointsBetween(double from, double to);
 
+    List<User> findUserByCountry(String country);
+
 
 }

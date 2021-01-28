@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -77,5 +78,14 @@ public class UserController {
         userService.deleteAllUser();
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @ApiOperation(value = "Get total distance of courier")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/profile/users")
+    @ApiResponse(code = 200, message = "Total Distance")
+    public List<User> getUserList() throws Exception {
+        return userService.getUsers();
+    }
+
 
 }

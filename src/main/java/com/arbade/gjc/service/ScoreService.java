@@ -35,7 +35,6 @@ public class ScoreService {
     }
 
     public ScoreResponseDto submit(ScoreRequestDto scoreRequestDto) throws Exception {
-//        User user = userRepository.findById(scoreRequestDto.get_id());
         User user = userRepository.findById(scoreRequestDto.get_id()).orElseThrow(() -> new Exception("Not Found"));
         if (CollectionUtils.isEmpty(user.getScores())) {
             user.setScores(new ArrayList());

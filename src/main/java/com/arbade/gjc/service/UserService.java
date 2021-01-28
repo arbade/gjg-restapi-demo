@@ -9,8 +9,9 @@ import com.arbade.gjc.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -52,5 +53,11 @@ public class UserService {
         userRepository.deleteAll();
     }
 
-
+    public List<User> getUsers() throws Exception {
+        List<User> users = userRepository.findAll();
+        if (CollectionUtils.isEmpty(users)){
+            throw new Exception("No user founds");
+        }
+        return users;
+    }
 }
