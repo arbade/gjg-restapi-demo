@@ -18,26 +18,26 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/leaderboard")
-@Api(value = "Courier Tracking Management System", description = "Operations pertaining to courier tracking in Case Demo")
+@Api(value = "GJG Backend Management System for Leaderboard Controller", description = "Operations pertaining to leaderboard in gjg backend")
 @RequiredArgsConstructor
 @Slf4j
 public class LeaderboardController {
 
     private final LeaderboardService leaderboardService;
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Get Global Leaderboard List")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    @ApiResponse(code = 200, message = "Total Distance")
+    @ApiResponse(code = 200, message = "Global Leaderboard")
     public List<Leaderboard> getLeaderboardList() throws Exception {
         return leaderboardService.getLeaderboard();
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Get Local Leaderboard List by country")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{country}")
-    @ApiResponse(code = 200, message = "Total Distance")
-    public List<Leaderboard> getLeaderboardList(@ApiParam(value = "courierId of courier", required = true, example = "1")  @PathVariable String country) throws Exception {
+    @ApiResponse(code = 200, message = "Local Leaderboard")
+    public List<Leaderboard> getLeaderboardList(@ApiParam(value = "country 'tr,us...'", required = true, example = "1")  @PathVariable String country) throws Exception {
         return leaderboardService.getLeaderboardByCountry(country);
     }
 

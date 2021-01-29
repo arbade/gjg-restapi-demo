@@ -21,7 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
-@Api(value = "Courier Tracking Management System", description = "Operations pertaining to courier tracking in Case Demo")
+@Api(value = "GJG Backend Management System for User Controller", description = "Operations pertaining to user in gjg backend")
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
@@ -36,9 +36,9 @@ public class UserController {
 
 
     @PostMapping
-    @ApiOperation(value = "Create new  Courier Location")
+    @ApiOperation(value = "Create new user")
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiResponse(code = 201, message = "CourierLocationDto")
+    @ApiResponse(code = 201, message = "User Response Dto")
     public ResponseEntity<UserResponseDto> create(@RequestBody UserRequestDto userRequestDto) {
 
 //        log.info("Create CourierLocation request is started. CourierLocationDto: {}", courierLocationDto);
@@ -47,11 +47,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDto);
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Get user by user id")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/profile/{userId}")
-    @ApiResponse(code = 200, message = "Total Distance")
-    public ResponseEntity<?> getUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable UUID userId) throws Exception {
+    @ApiResponse(code = 200, message = "User by id")
+    public ResponseEntity<?> getUserById(@ApiParam(value = "uuid for user", required = true, example = "1") @PathVariable UUID userId) throws Exception {
 
         try {
             UserResponseDto userResponseDto = userService.getByUserId(userId);
@@ -61,37 +61,37 @@ public class UserController {
         }
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Delete user by id")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/profile/delete/{userId}")
     @ApiResponse(code = 200, message = "Delete User by ID ")
-    public ResponseEntity<?> deleteUserById(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable UUID userId) {
+    public ResponseEntity<?> deleteUserById(@ApiParam(value = "delete user by uuid", required = true, example = "1") @PathVariable UUID userId) {
         userService.deleteUserById(userId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Delete All User")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("/profile/deleteAll")
-    @ApiResponse(code = 200, message = "Delete User by ID ")
+    @ApiResponse(code = 200, message = "Deleted All User ")
     public ResponseEntity<?> deleteAll() {
         userService.deleteAllUser();
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Get All User List")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/profile/users")
-    @ApiResponse(code = 200, message = "Total Distance")
+    @ApiResponse(code = 200, message = "User List")
     public List<User> getUserList() throws Exception {
         return userService.getUsers();
     }
 
-    @ApiOperation(value = "Get total distance of courier")
+    @ApiOperation(value = "Create Random user")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/profile/{amount}")
-    @ApiResponse(code = 200, message = "Total Distance")
-    public ResponseEntity<?> createRandUser(@ApiParam(value = "courierId of courier", required = true, example = "1") @PathVariable int amount) throws Exception {
+    @ApiResponse(code = 200, message = "Created Random User")
+    public ResponseEntity<?> createRandUser(@ApiParam(value = "integer amount of random user", required = true, example = "1") @PathVariable int amount) throws Exception {
 
         try {
             userService.createRandomUser(amount);

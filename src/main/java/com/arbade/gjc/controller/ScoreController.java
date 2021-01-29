@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/score")
-@Api(value = "Courier Tracking Management System", description = "Operations pertaining to courier tracking in Case Demo")
+@Api(value = "GJG Backend Management System for Score Controller", description = "Operations pertaining to submit score in gjg backend")
 @RequiredArgsConstructor
 @Slf4j
 public class ScoreController {
@@ -25,9 +25,9 @@ public class ScoreController {
 
 
     @PostMapping
-    @ApiOperation(value = "Create new  Courier Location")
+    @ApiOperation(value = "Submit new score to user by user id")
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiResponse(code = 201, message = "CourierLocationDto")
+    @ApiResponse(code = 201, message = "UserResponseDto")
     public ResponseEntity<ScoreResponseDto> submit(@RequestBody ScoreRequestDto scoreRequestDto) throws Exception {
         ScoreResponseDto scoreResponseDto = scoreService.submit(scoreRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(scoreResponseDto);
