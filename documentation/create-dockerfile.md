@@ -4,7 +4,7 @@
 
 - First step of dockerize, it would be need to create docker file 
 
-``
+```
 FROM openjdk:11-jdk-alpine
 
 EXPOSE 8080
@@ -12,7 +12,7 @@ EXPOSE 8080
 ADD target/gjg.jar gjg.jar
 
 ENTRYPOINT["java","-jar","/gjg.jar"]
-``
+```
 
 - After then, you could be use the maven wrapper for build to docker image on local
 ```
@@ -269,7 +269,7 @@ arbade@Ardas-MacBook-Pro gjc % ./mvnw spring-boot:build-image
 [INFO] Finished at: 2021-01-29T13:07:31+03:00
 [INFO] ------------------------------------------------------------------------
 arbade@Ardas-MacBook-Pro gjc %
-arbade@Ardas-MacBook-Pro gjc % docker images
+arbade@Ardas-MacBook-Pro gjc` % docker images
 
 REPOSITORY                                   TAG                 IMAGE ID            CREATED             SIZE
 gjc                                          0.0.1-SNAPSHOT      11e9134d723f        2 seconds ago        293MB
