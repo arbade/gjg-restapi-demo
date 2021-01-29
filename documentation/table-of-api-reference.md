@@ -27,7 +27,7 @@
 | DELETE | /api/user/profile/deleteAll       | Delete All User                       |   |   |
 | GET    | /api/user/profile/users           | Get All User List                     |   |   |
 
-- From local & docker image, you need to use `localhost:8080/PATH`
+- From local & docker, you need to use `localhost:8080/PATH`
 
 - For Cloud, you need to use `http://34.89.138.190:8080/PATH`
 
