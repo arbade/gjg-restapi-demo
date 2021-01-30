@@ -52,6 +52,58 @@ Players gain points by submitting scores and they are placed on the leaderboard 
 
 - Browse the Swagger UI `http://localhost:8080/swagger-ui.html`
 
+
+## Clusters Information
+
+- It would be deployed to application and database on the cloud cluster.Cluster information is the available at the following content :
+
+- MongoDB Cluster
+
+- -  ```
+     CLUSTER TIER -- M0 Sandbox (General)
+     REGION -- AWS / Frankfurt (eu-central-1)
+     TYPE -- Replica Set - 3 nodes
+     ```
+- Google CLoud Kubernetes Engine CLuster
+
+- - ```
+    Cluster basics
+    
+    Name	                          nginx-1-cluster		
+    Location type	                  Zonal		
+    Master zone	                  europe-west3-c		
+    Default node zones                europe-west3-c
+    Total size	                  3		
+    Endpoint	                  35.234.117.244
+    	
+    
+    	
+    Automation
+   	
+    Vertical Pod Autoscaling	   Enabled		
+    Node auto-provisioning	           Disabled		
+    Autoscaling profile	           Balanced	
+    	
+    Networking
+   	
+    Pod address range	          10.96.0.0/14		
+    Maximum pods per node	          110		
+    Service address range	          10.100.0.0/20		
+    
+    Nodes
+    
+    | Name                                           | Status | CPU Request | CPU allocotable | Memory Request | Memory allocatable |   |   |   |
+    |------------------------------------------------|--------|-------------|-----------------|----------------|--------------------|---|---|---|
+    | gke-nginx-1-cluster-default-pool-fb23667d-2qqw |  Ready |   609 mCPU  |       940 mCPU  |      699.4 MB  |           2.97 GB  |   |   |   |
+    | gke-nginx-1-cluster-default-pool-fb23667d-fw7c |  Ready |   473 mCPU  |       940 mCPU  |     398.46 MB  |           2.97 GB  |   |   |   |
+    | gke-nginx-1-cluster-default-pool-fb23667d-n4mz |  Ready |   323 mCPU  |       940 mCPU  |     272.63 MB  |           2.97 GB  |   |   |   |
+    
+    
+    
+    ```
+    
+    It could be following the links for[`kubernetes-deployment`](/kubernetes.yml)
+
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.arbade.gjc.GjcApplication` class from your IDE
