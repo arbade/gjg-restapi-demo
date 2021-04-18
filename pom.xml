@@ -16,6 +16,18 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>arbade-releases</name>
+            <url>http://35.233.238.77:8081/artifactory/viper-gjg-backend</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>arbade-snapshots</name>
+            <url>http://35.233.238.77:8081/artifactory/viper-gjg-backend</url>
+        </snapshotRepository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
