@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.arbade</groupId>
     <artifactId>gjc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>gjc</name>
     <description>Demo GJC Backend Project</description>
     <properties>
