@@ -5,11 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.arbade</groupId>
     <artifactId>gjc</artifactId>
-    <version>1.1.2</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>gjc</name>
     <description>Demo GJC Backend Project</description>
     <properties>
