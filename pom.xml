@@ -19,13 +19,13 @@
     <distributionManagement>
         <repository>
             <id>central</id>
-            <name>arbade-releases</name>
-            <url>http://35.233.238.77:8081/artifactory/viper-gjg-backend</url>
+            <name>ip-172-31-40-234-releases</name>
+            <url>http://35.157.174.252:8081/artifactory/viper-backend</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
-            <name>arbade-snapshots</name>
-            <url>http://35.233.238.77:8081/artifactory/viper-gjg-backend</url>
+            <name>ip-172-31-40-234-snapshots</name>
+            <url>http://35.157.174.252:8081/artifactory/viper-backend</url>
         </snapshotRepository>
     </distributionManagement>
     <dependencies>
