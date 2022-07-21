@@ -3,9 +3,9 @@
 
 name: Maven Package
 
-on:
-  release:
-    types: [created]
+on: # When do you want it to run
+  push: # When pushed to master branch 
+    branches: [ master ]
 
 jobs:
   build:
