@@ -50,7 +50,7 @@ jobs:
     - name: Build and push Docker  
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}
+        image: ${{ env.PROJECT_ID }}/${{ env.SERVICE }}
         tags: ${{  github.sha }}
         registry: gcr.io
         username: _json_key
