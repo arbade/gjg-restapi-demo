@@ -47,6 +47,10 @@ jobs:
     #  run: |-
     #    docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }} .
     #    docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
+    - name: demo-checkout
+      run: |-
+         pwd
+         ls -la
     - name: Build and push Docker  
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
