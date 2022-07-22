@@ -44,7 +44,6 @@ jobs:
     - name: Authorize Docker push
       run: gcloud auth configure-docker
     - name: Build and Push Container
-      working-directory: /home/runner/work/gjg-restapi-demo/
       run: |-
         docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }} .
         docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
