@@ -43,10 +43,18 @@ jobs:
        # Configure Docker with Credentials
     - name: Authorize Docker push
       run: gcloud auth configure-docker
-    - name: Build and Push Container
-      run: |-
-        docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }} .
-        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
+    #- name: Build and Push Container
+    #  run: |-
+    #    docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }} .
+    #    docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{  github.sha }}
+    - name: Build and push Docker  
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}
+        tags: ${{  github.sha }}
+        registry: gcr.io
+        username: _json_key
+        password: ${{ secrets.GCP_SA_KEY }}
     - name: Deploy to Cloud Run
       id: gohibeesh
       uses: google-github-actions/deploy-cloudrun@v0.4.0
