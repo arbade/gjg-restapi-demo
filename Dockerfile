@@ -4,4 +4,6 @@ EXPOSE 8080
 
 #ADD target/gjg.jar gjg.jar
 COPY --from=builder /app/target/gjg.jar /gjg.jar
-ENTRYPOINT ["java","-jar","/gjg.jar"]
+#ENTRYPOINT ["java","-jar","/gjg.jar"]
+
+CMD ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/gjg.jar"]
