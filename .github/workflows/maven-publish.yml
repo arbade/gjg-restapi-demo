@@ -30,7 +30,7 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn clean install & mkdir staging && cp target/*jar-with-dependencies.jar staging
+      run: mvn clean install & mkdir staging && cp target/gjg.jar staging
       #run: mkdir staging && cp target/*jar-with-dependencies.jar staging
       #  - uses: actions/upload-artifact@v1
       #    with:
