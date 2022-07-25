@@ -10,6 +10,8 @@ COPY --from=build /workspace/target/gjg.jar gjg.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","gjg.jar"]
 
+# inital commit
+
 
 #FROM adoptopenjdk/openjdk11:latest
 
